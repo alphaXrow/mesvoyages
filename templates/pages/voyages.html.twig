@@ -4,7 +4,11 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th class="text-left" scopre="col">Ville</th>
+                <th class="text-left" scopre="col">
+                    Ville
+                    <a href="{{ path('voyages.sort', {champ:'ville', ordre:'ASC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
+                    <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>
+                </th>
                 <th class="text-left" scopre="col">Pays</th>
                 <th class="text-right" scope="col">Note</th>
                 <th class="text-center" scopre="col">Date</th>
@@ -33,7 +37,7 @@
                             </div>
                         {% endif %}
                     </strong>
-                </td>>
+                </td>
                     <td class="text-center">
                         {{ visite.datecreationstring }}
                     </td>
