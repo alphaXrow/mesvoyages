@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @author alpha
  */
 class VoyageController extends AbstractController {
+    
     /**
      *
      * @var VisiteRepository
