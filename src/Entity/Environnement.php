@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EnvironnementRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,7 +34,7 @@ class Environnement
         return $this->nom;
     }
 
-    public function setNom(string $nom): self
+    public function setNom(?string $nom): self
     {
         $this->nom = $nom;
 
@@ -41,7 +43,7 @@ class Environnement
     
     /**
      *
-     * @ORM\ManyToMany(targetEntity="App\Entity\Environnement")
+     * @ORM\ManyToMany(targetEntity="Environnement")
      */
     private $environnements;
     
@@ -69,7 +71,7 @@ class Environnement
     
     public function removeEnvironnement(Environnement $environnement): self
     {
-        $this->environnements->removeElement ($environnement);
+        $this->environnements->removeElement($environnement);
         
         return $this;
     }
