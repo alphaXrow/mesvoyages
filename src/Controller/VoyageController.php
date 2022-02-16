@@ -73,9 +73,12 @@ class VoyageController extends AbstractController {
      * @return Response
      */
     public function showOne($id): Response {
-        $visite = $this->repository->find($id);
-        return $this->render("pages/voyage.html.twig", [
-            'visite' => $visite
-        ]);
+        if($this->isCsrfTokenValid('filtre_'.$champ, $request->get('_token'))) {
+            $visite = $this->repository->find($id);
+            return $this->render("pages/voyage.html.twig", [
+                'visite' => $visite
+            ]);
+        }
+        return $this->redirectToRoute("voyages");
     }
 }
