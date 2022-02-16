@@ -17,4 +17,39 @@
     <p>
         Voici mes 2 derniers voyages :
     </p>
+    <table>
+        <tr>
+            {% for visite in visites %}
+                <td style="vertical-align: text-top; width: 50%">
+                    <div class="row mt-3 mr-3">
+                        <div class="col">
+                            <p>{{ visite.datecreationstring }}</p>
+                            <h3 class="text-primary mt-1">
+                                <a href="{{ path('voyages.showone', {id:visite.id}) }}">{{ visite.ville }}</a>
+                            </h3>
+                            <p>{{ visite.pays }}</p>
+                            {% if visite.note>=10 %}
+                                <p class="text-success mt-1">{{ visite.note }}/20</p>
+                            {% else %}
+                                <p class="text-danger mt-1">{{ visite.note }}/20</p>
+                            {% endif %}
+                            <p class="mt-5">t° entre {{ visite.tempmin }}° et {{ visite.tempmax }}°</p>
+                            <p class="mt-1"><strong>Environnements :</strong><br/>
+                                {% for environnement in visite.environnements %}
+                                    {{ environnement.nom }}
+                                {% endfor %}
+                            </p>
+                        </div>    
+                        <div class="col">
+                            <!-- emplacement photo -->
+                            {% if visite.imagename %}
+                                <img src="{{ app.request.getBasePath()~vich_uploader_asset(visite, 'imageFile') }}" 
+                                     class="card-img-top" style="with:100%;height:auto;">
+                            {% endif %}
+                        </div>
+                    </div>                    
+                </td>
+            {% endfor %}    
+        </tr>
+    </table>
 {% endblock %}

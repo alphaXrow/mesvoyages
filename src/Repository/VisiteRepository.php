@@ -53,6 +53,19 @@ class VisiteRepository extends ServiceEntityRepository
                     ->getResult();
         }
     }
+    
+    /**
+     * 
+     * @param type $nb
+     * @return Visite[]
+     */
+    public function findAllLastest($nb) : array {
+        return $this->createQueryBuilder('v') // alias de la table
+                ->orderBy('v.datecreation', 'DESC')
+                ->setMaxResults($nb)
+                ->getQuery()
+                ->getResult();
+    }
     // /**
     //  * @return Visite[] Returns an array of Visite objects
     //  */
