@@ -44,7 +44,7 @@ class ContactController extends AbstractController {
      * @param \Swift_Mailer $mailer
      * @param Contact $contact
      */
-     /**public function envoiMail(MailerInterface $mailer, Contact $contact): Response
+     public function envoiMail(MailerInterface $mailer, Contact $contact): Response
     {
         $message = (new Email())
             ->from($contact->getEmail())
@@ -61,6 +61,4 @@ class ContactController extends AbstractController {
         $mailer->send($message);
         return $this->redirectToRoute('contact');
     }
-      * 
-      */
 }
