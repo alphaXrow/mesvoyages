@@ -37,11 +37,13 @@ class Visite
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Assert\LessThanOrEqual("now")
      */
     private $datecreation;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Range(min = 0, max = 20)
      */
     private $note;
 
@@ -57,6 +59,7 @@ class Visite
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\GreaterThan(propertyPath="tempmin")
      */
     private $tempmax;
 
@@ -161,7 +164,7 @@ class Visite
     
     public function getDatecreationString(): string
     {
-        return $this->datecreation->format('d/m/y');
+        return $this->datecreation->format('d/m/Y');
     }
 
     /**
@@ -241,6 +244,6 @@ class Visite
 
         return $this;
     }
-
-
+    
+    
 }
